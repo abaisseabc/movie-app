@@ -1,0 +1,24 @@
+#header {
+    background: #e5e5e5;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+}
+
+.header__movies, .header__favorites{
+    padding: 18px;
+    cursor: pointer;
+}
+
+.header__movies:hover, .header__favorites:hover {
+    font-family: 'RobotoMono-SemiBold';
+}
+
+.header__movies {
+    padding-left: 20px;
+}
+
+.header__favorites {
+    padding-right: 20px;
+}
