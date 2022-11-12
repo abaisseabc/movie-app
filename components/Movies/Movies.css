@@ -1,4 +1,5 @@
-#movies {
+.movies {
+    display: block;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -21,6 +22,7 @@
 }
 
 .movies-content__text {
+    height: 90px;
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -29,6 +31,10 @@
 
 .movies-content__btn {
     display: none;
+}
+
+.movies-content__btn:hover {
+    background: #e5e5e5;
 }
 
 .movies-content__btn.active {

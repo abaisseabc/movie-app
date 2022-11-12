@@ -12,24 +12,24 @@
 
     <div id="header">
         <div class="header__movies">
-            Главная
+            <p>Главная</p>
         </div>
         <div class="header__favorites">
-            Избранное
+            <p>Избранное: <span class="header_favorites__length"></span></p>
         </div>
     </div>
 
-    <div id="movies" class="container"></div>
-    <div id="favorites" class="container"></div>
+    <div class="movies" id="container"></div>
+    <div class="favorites" id="container"></div>
 
 
     <script src="./constans/movie_list.js"></script>
     <script src="./constans/root.js"></script>
+    <script src="./constans/showComponents.js"></script>
     <script src="./utils/localSrotage.js"></script>
 
     <!-- Header -->
-    <link rel="stylesheet" href="./components/Header/Header.css">
-    <script src="./components/Header/Header.js"></script>
+    <link rel="stylesheet" href="./components/Header/Header.css"> 
 
     <!-- Movies -->
     <link rel="stylesheet" href="./components/Movies/Movies.css">

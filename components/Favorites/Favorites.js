@@ -6,6 +6,7 @@ class Favorites {
             ROOT_FAVORITES.innerHTML = ''
             favoritesPage.render(moviesStore);
             favoritesPage.checkingLocalStorageBeforeRender(moviesStore);
+            ROOT_HEADER.innerHTML = moviesStore.length;
         }
     }
 
@@ -76,6 +77,21 @@ window.addEventListener('click', (e) => {
         if (e.target.className === 'auxiliary-btn') {
             e.target.previousElementSibling.classList.add('active')
             e.target.classList.remove('active');
+        }
+
+        if (e.target.className === 'favorites-content__btn-del') {
+
+            MOVIES.then((result) => {
+                let resultArr = Object.entries(result).map(([key, value]) => ({key,value}));
+    
+                resultArr.forEach(el => {
+                    let activeEl = document.getElementById(`${el.value.kinopoiskId}`);
+                    if (e.target.id == el.value.kinopoiskId) {
+                        activeEl.classList.add('active')
+                        activeEl.nextElementSibling.classList.remove('active');
+                    }
+                })
+            });
         }
 
         MOVIES.then((result) => {

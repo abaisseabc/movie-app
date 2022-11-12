@@ -35,7 +35,7 @@ img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
-.container {
+#container {
     position: relative;
     width: 1140px;
     margin: 0 auto;
@@ -61,4 +61,22 @@ body {
     background: #000;
 	font-family: 'RobotoMono-Regular';
 	font-size: 10px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+	#container {
+		width: 300px;
+	}
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+	#container {
+		width: 460px;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+	#container {
+		width: 748px;
+	}
 }
