@@ -5,16 +5,29 @@ class Favorites {
         if (moviesStore.length >= 0) {
             ROOT_FAVORITES.innerHTML = ''
             favoritesPage.render(moviesStore);
+            favoritesPage.checkingLocalStorageBeforeRender(moviesStore);
         }
     }
 
+    checkingLocalStorageBeforeRender(moviesStore) {
+        MOVIES.then((result) => {
+            let resultArr = Object.entries(result).map(([key, value]) => ({key,value}));
+
+            resultArr.forEach(movie => {
+                moviesStore.forEach(el => {
+                    let activeEl = document.getElementById(`${movie.value.kinopoiskId}`);
+
+                    if (activeEl.id == el.value.kinopoiskId) {
+                        favoritesPage.createNewBtnForDelete(activeEl);
+                    }
+                })
+            })
+        });
+    }
+
     createNewBtnForDelete(elemHtml) {
-        elemHtml.style.display = 'none'
-        let newBtn = document.createElement('button');
-        newBtn.textContent = 'Удалить из избранного';
-        newBtn.className = 'auxiliary-btn'
-        newBtn.id = elemHtml.id
-        elemHtml.previousElementSibling.append(newBtn);
+        elemHtml.classList.remove('active');
+        elemHtml.nextElementSibling.classList.add('active');
     }
 
     render(moviesStore) {
@@ -40,7 +53,7 @@ const favoritesPage = new (Favorites);
 favoritesPage.getMovieSoreForRender();
 
 window.addEventListener('click', (e) => {
-    if (e.target.className === 'movies-content__btn') {
+    if (e.target.className === 'movies-content__btn active') {
         MOVIES.then((result) => {
             let resultArr = Object.entries(result).map(([key, value]) => ({key,value}));
 
@@ -59,6 +72,12 @@ window.addEventListener('click', (e) => {
 window.addEventListener('click', (e) => {
 
     if ( (e.target.className === 'favorites-content__btn-del' || (e.target.className === 'auxiliary-btn'))) {
+
+        if (e.target.className === 'auxiliary-btn') {
+            e.target.previousElementSibling.classList.add('active')
+            e.target.classList.remove('active');
+        }
+
         MOVIES.then((result) => {
             let resultArr = Object.entries(result).map(([key, value]) => ({key,value}));
 
@@ -69,10 +88,6 @@ window.addEventListener('click', (e) => {
                 }
             })
         });
-    }
-
-    if (e.target.className === 'auxiliary-btn') {
-        e.target.parentNode.nextElementSibling.style.display = 'block'
     }
 
 });

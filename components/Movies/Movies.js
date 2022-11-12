@@ -12,7 +12,8 @@ class Movies {
                         <div class="movies-content__text">
                             <p>${el.value.nameRu}</p>
                         </div>
-                        <button class="movies-content__btn" id="${el.value.kinopoiskId}">Добавить в избранное</button>
+                        <button class="movies-content__btn active" id="${el.value.kinopoiskId}">Добавить в избранное</button>
+                        <button class="auxiliary-btn" id="${el.value.kinopoiskId}">Удалить из избранного</button>
                     </div>
                 `;
                 ROOT_MOVIES.innerHTML += htmlMovies;
